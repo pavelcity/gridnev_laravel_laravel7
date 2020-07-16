@@ -51,6 +51,7 @@ class Category extends Model
 
     ////// удаление категории
     public function udalenie () {
+        $this->removeAvatar();
         $this->delete();
     }
 
@@ -59,13 +60,18 @@ class Category extends Model
 
     //------------------------------------------
 
+    ### удаление картинки
+    public function removeAvatar () {
+        if ($this->avatar != null) {
+            Storage::delete('/uploads/' . $this->avatar);
+        }
+    }
+
     ////// загрузка картинки
     public function zagruzitPic ($image) {
         if ($image == null) {return;}
 
-        if ($this->avatar != null) {
-            Storage::delete('/uploads' . $this->avatar);
-        }
+        $this->removeAvatar();
 
 
         $filename = Str::random(10) . '.' . $image->extension();

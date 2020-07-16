@@ -43,31 +43,40 @@ class User extends Authenticatable
 
     //------------------------------------------
 
+
+    ### метод работы с паролем
+    public function generatePassword ($password) {
+        if ($password != null) {
+            $this->password = bcrypt($password);
+            $this->save();
+        }
+    }
+
+
+
+
     ### добавление пользователя
     public static function add ($fields) {
         $user = new static;
         $user->fill($fields);
-        $user->password = bcrypt($fields['password']);
         $user->save();
 
         return $user;
     }
 
+
+
     ### изменение пользователя
     public function edit ($fields) {
         $this->fill($fields);
-
-        if ($fields['password'] != null) {
-            $this->password = bcrypt($fields['password']);
-        }
-
         $this->save();
     }
 
 
+
     ### удаление пользователя
     public function remove () {
-        Storage::delete('public/uploads'. $this->image);
+        $this->removeAvatar();
         $this->delete();
     }
 
@@ -80,16 +89,21 @@ class User extends Authenticatable
 
     //------------------------------------------
 
+    ### удаление картинки
+    public function removeAvatar () {
+        if ($this->avatar != null) {
+            Storage::delete('/uploads/'. $this->avatar);
+        }
+    }
+
+
+
     ### загрузить картинку
     public function uploadAvatar ($image) {
 
         if($image == null) {return;}
 
-//        $this->removeAvatar();
-        if ($this->avatar != null) {
-            Storage::delete('/uploads'. $this->avatar);
-        }
-
+        $this->removeAvatar();
 
         $filename = Str::random(10) . '.' . $image->extension();
         $image->storeAs('/uploads/', $filename);
@@ -105,7 +119,6 @@ class User extends Authenticatable
         if ($this->avatar == null) {
             return '/img/not_avatar.jpg';
         }
-//        return '/public/uploads/' . $this->avatar;
         return '/uploads/' . $this->avatar;
     }
 

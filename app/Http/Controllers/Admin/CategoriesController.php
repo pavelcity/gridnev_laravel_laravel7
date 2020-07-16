@@ -58,7 +58,7 @@ class CategoriesController extends Controller
 
         $category = Category::find($id);
         $category->redactirovanie($request->all());
-
+        $category->zagruzitPic($request->file('avatar'));
         return redirect()->route('categories.index');
     }
 

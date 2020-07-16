@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use  App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -48,6 +49,7 @@ class UsersController extends Controller
 
 
         $user = User::add($request->all());
+        $user->generatePassword($request->get('password'));
         $user->uploadAvatar($request->file('avatar'));
 
         return redirect()->route('users.index');
@@ -75,7 +77,11 @@ class UsersController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($user->id),
+            ],
             'avatar' => 'nullable|image'
         ], [
             'name.required' => 'поле Имя должно быть заполнено',
@@ -84,9 +90,10 @@ class UsersController extends Controller
         ]);
 
         $user->edit($request->all());
+        $user->generatePassword($request->get('password'));
         $user->uploadAvatar($request->file('avatar'));
 
-        return redirect()->route('users.index ');
+        return redirect()->route('users.index');
     }
 
 

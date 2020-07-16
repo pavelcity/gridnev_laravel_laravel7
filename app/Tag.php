@@ -57,6 +57,7 @@ class Tag extends Model
 
     ////// удаление тега
     public function remove () {
+        $this->removePic();
         $this->delete();
     }
 
@@ -67,13 +68,20 @@ class Tag extends Model
 
     //------------------------------------------
 
-    ////// добавляем картинку
+    ### удаление картинки
+    public function removePic () {
+        if ($this != null) {
+            Storage::delete('/uploads/' . $this->pic);
+        }
+    }
+
+
+
+    ### добавляем картинку
     public function dobavitPic ($img) {
         if ($img == null) {return;}
 
-        if ($this->pic != null) {
-            Storage::delete('/uploads' . $this->pic);
-        }
+        $this->removePic();
 
         $namefile = Str::random(10) . '.' . $img->extension();
         $img->storeAs('/uploads/', $namefile);
@@ -82,7 +90,7 @@ class Tag extends Model
     }
 
 
-    ////// выводим картинку
+    ### выводим картинку
     public function showPic () {
         if ($this->pic == null) {
             return '/img/not_avatar.jpg';

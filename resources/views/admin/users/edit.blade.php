@@ -35,7 +35,7 @@
                 {!! Form::open(
                         ['route' => ['users.update', $user->id],
                         'method'=> 'put',
-                        'files' => 'true']
+                        'files' => true]
                         ) !!}
 
                 <div class="uk-margin">

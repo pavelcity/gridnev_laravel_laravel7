@@ -67,7 +67,7 @@ class TagsController extends Controller
 
         $tag = Tag::find($id);
         $tag->edit($request->all());
-
+        $tag->dobavitPic($request->file('pic'));
         return redirect()->route('tags.index');
 
     }
