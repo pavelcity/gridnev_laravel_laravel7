@@ -75,11 +75,15 @@ class User extends Authenticatable
 
 
     ### удаление пользователя
-    public function remove () {
-        $this->removeAvatar();
-        $this->delete();
-    }
+//    public function remove () {
+//        $this->removeAvatar();
+//        $this->delete();
+//    }
 
+    public function delete () {
+        $this->removeAvatar();
+        parent::delete();
+    }
 
 
 

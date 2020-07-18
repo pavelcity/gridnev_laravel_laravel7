@@ -14,8 +14,8 @@
                     <li><a href="{{ url('/admin') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Главная</a></li>
                     <li><a href="{{ route('categories.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Категории</a></li>
                     <li><a href="{{ route('tags.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Теги</a></li>
-                    <li><a href="{{ route('users.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-primary">Пользователи</a></li>
-                    <li><a href="{{ route('catalog.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Каталог</a></li>
+                    <li><a href="{{ route('users.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Пользователи</a></li>
+                    <li><a href="{{ route('catalog.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-primary">Каталог</a></li>
                 </ul>
             </div>
         </div>
@@ -27,35 +27,36 @@
 
         <div class="uk-width-expand@m uk-padding">
 
-            <div class="uk-h3">Пользователи</div>
-            <a href="{{ route('users.create') }}" class="uk-button uk-button-primary uk-button-small">Создать</a>
+            <div class="uk-h3">Каталог (карточки товара)</div>
+            <a href="{{ route('catalog.create') }}" class="uk-button uk-button-primary uk-button-small">Создать</a>
 
             <table class="uk-table uk-table-middle uk-table-divider uk-table-hover">
                 <thead>
                 <tr>
-                    <th >id</th>
-                    <th >Имя </th>
-                    <th >img </th>
-                    <th class="uk-width-expand">email </th>
-
+                    <th class="uk-width-small">id</th>
+                    <th class="uk-width-small">картинка</th>
+                    <th style="min-width: 200px;" class="uk-width-small">заголовок</th>
+                    <th class="uk-width-small">категория</th>
+                    <th class="uk-width-expand">теги</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
 
-                @foreach($users as $user)
+                @foreach($catalogs as $catalog)
                     <tr>
-                        <td>{{ $user->id }}</td>
-                        <td style="min-width: 150px; ">{{ $user->name }}</td>
-                        <td><img style="min-width: 140px;" src="{{ $user->getImage() }}" alt=""></td>
-                        <td>{{ $user->email }}</td>
+                        <td >{{ $catalog->id }}</td>
+                        <td><img style="min-width: 100px;" src="{{ $catalog->getImage() }}" alt=""></td>
+                        <td style="min-width: 300px;">{{ $catalog->title }}</td>
+                        <td style="min-width: 200px;">{{ $catalog->getCategoryTitle() }}</td>
+                        <td>{{ $catalog->getTagsTitles() }}</td>
                         <td>
                             <div class="uk-margin-small">
                                 <div class="uk-button-group">
-                                    <a href="{{ route('users.edit', $user->id) }}" class="uk-icon-button uk-margin-small-right" uk-icon="pencil" uk-tooltip="title: edit"></a>
+                                    <a href="{{ route('catalog.edit', $catalog->id) }}" class="uk-icon-button uk-margin-small-right" uk-icon="pencil" uk-tooltip="title: edit"></a>
                                     {!! Form::open([
                                             'method' => 'delete',
-                                            'route' => ['users.destroy', $user->id]
+                                            'route' => ['catalog.destroy', $catalog->id]
                                             ]) !!}
                                     <button onclick="return confirm('удалить?')" class="uk-icon-button uk-margin-small-right" uk-icon="trash" uk-tooltip="title: удалить"></button>
                                     {!! Form::close() !!}
