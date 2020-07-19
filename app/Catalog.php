@@ -86,6 +86,8 @@ class Catalog extends Model
 
 
 
+
+
     //------------------------------------------
 
         ### add
@@ -96,10 +98,13 @@ class Catalog extends Model
             $catalog->user_id = 1;
 
             $catalog->save();
-//            parent::save();
+            // parent::save();
 
             return $catalog;
         }
+
+
+
 
         ### edit
         public function edit($fields)
@@ -109,20 +114,39 @@ class Catalog extends Model
         }
 
 
+
+
         ### remove
         public function remove()
         {
             $this->removeImage();
-//            $this->delete();
+        //  $this->delete();
             parent::delete();
         }
 
 
+
+
+
+
         ### установка даты - день|месяц|год
+        ### срабатывает до записи в базу
         public function setDateAttribute ($value)
         {
             $date = Carbon::createFromFormat('d.m.Y', $value)->format('Y-m-d');
             $this->attributes['date'] = $date;
+        }
+
+
+        ### срабатывает перед выводом на страницу
+        public function getDateAttribute ($value) {
+            $date = Carbon::createFromFormat('Y-m-d', $value)->format('d.m.Y');
+            return $date;
+        }
+
+
+        public function getDate () {
+            return $this->date;
         }
 
 
@@ -142,6 +166,8 @@ class Catalog extends Model
     }
 
 
+
+
     ### загрузить картинку
     public function uploadImage($image)
     {
@@ -155,6 +181,9 @@ class Catalog extends Model
         $this->image = $filename;
         $this->save();
     }
+
+
+
 
 
     ### вывод картинки
@@ -218,5 +247,13 @@ class Catalog extends Model
 
 
 
+
+
+
+
+    ### следующая предыдующая запись
+    public function hasPrevTovar () {
+        
+    }
 
 }

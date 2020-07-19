@@ -1,6 +1,10 @@
 {
     "/css/adminstyle.css": "/css/adminstyle.css",
+    "/css/main.css": "/css/main.css",
     "/css/uikit.min.css": "/css/uikit.min.css",
     "/js/admin.js": "/js/admin.js",
-    "/js/adminscripts.js": "/js/adminscripts.js"
+    "/js/adminscripts.js": "/js/adminscripts.js",
+    "/css/uikit_for_site.min.css": "/css/uikit_for_site.min.css",
+    "/js/uikit_for_site.js": "/js/uikit_for_site.js",
+    "/js/my.js": "/js/my.js"
 }

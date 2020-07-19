@@ -63,7 +63,9 @@ class CatalogController extends Controller
     public function edit($id)
     {
         $catalog = Catalog::find($id);
-        return view ('admin.catalog.edit', compact('catalog'));
+        $category = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        return view ('admin.catalog.edit', compact('catalog', 'category', 'tags'));
     }
 
 
@@ -71,8 +73,32 @@ class CatalogController extends Controller
     ### update
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'title' => 'required',
+            'big_text' => 'required',
+            'srok_godnosti' => 'required',
+            'date' => 'required',
+            'image' => 'nullable|image'
+        ]);
+
+
+//          dd($request->get('status'));
+
+
+        $catalog = Catalog::find($id);
+        $catalog->edit($request->all());
+        $catalog->uploadImage($request->file('image'));
+        $catalog->setCategory($request->get('category_id'));
+        $catalog->setTags($request->get('tags'));
+        $catalog->toggleStatus($request->get('status'));
+
+        return redirect()->route('catalog.index');
     }
+
+
+
+
 
 
     ### delete

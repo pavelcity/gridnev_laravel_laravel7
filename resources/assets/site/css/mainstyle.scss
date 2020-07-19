@@ -1,0 +1,46 @@
+body {
+    background-color: ccc;
+    min-height: 100vh;
+
+    h1 {
+        color:#999;
+    }
+}
+
+
+.wrap_paginate {
+    margin-top: 60px;
+    background-color: #ECF0F1;
+
+    nav {
+        ul.pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            li {
+                margin: 0 20px;
+                list-style: none;
+
+                a {
+                    text-decoration: none;
+                    color:#2292F2;
+                }
+            }
+
+            li.active {
+                background-color: #2292F2;
+                border-radius: 50%;
+                padding: 5px 13px;
+                color:#fff;
+                a{
+                    //color: #fff;
+                }
+            }
+        }
+    }
+}
+
+
+
+

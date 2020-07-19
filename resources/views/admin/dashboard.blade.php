@@ -10,20 +10,21 @@
 
         <div class="uk-width-1-6@m leftAdminPanel">
             <div class="uk-card uk-card-body uk-card-small">
-                <ul class="uk-list">
-                    <li><a href="{{ url('/admin') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-primary">Главная</a></li>
-                    <li><a href="{{ route('categories.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Категории</a></li>
-                    <li><a href="{{ route('tags.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Теги</a></li>
-                    <li><a href="{{ route('users.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Пользователи</a></li>
-                    <li><a href="{{ route('catalog.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Каталог</a></li>
-
-                </ul>
+                @include('admin._sidebar')
             </div>
         </div>
         <div class="uk-width-expand@m uk-padding">
 
-            <img style="width: 300px;" src="http://gridnevhleb.ru/img/010_1440_2.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis est excepturi facilis harum impedit molestiae molestias nam, nesciunt pariatur provident quas quisquam quo quod sapiente similique ut voluptas voluptatibus voluptatum?</p>
+            <img  src="/img/logo_dash2.jpg" alt="">
+            <p>Хлеб — хлебобулочное изделие без начинки, получаемое путём выпекания теста (состоящего как минимум из муки и воды), разрыхлённого дрож­жами или за­ква­ской[1]. Согласно российскому ГОСТу, к хлебу относят такие хлебобулочные изделия, масса которых превышает 500 г, а влажность должна быть не менее 19 % (по терминологии ГОСТ 32677-2014[2]). </p>
+
+            <p>Для приготовления хлеба употребляют пшеничную и ржаную муку, реже — кукурузную, ячменную и другие. Словом хлеб часто называют сельскохозяйственные культуры (пшеницу, рожь, ячмень и другие), а также само зерно этих культур и изготовляемую из него муку (см. Зерновые культуры)[3]. В некоторые сорта хлеба также добавляют специи — такие, как зёрна тмина, орехи, изюм, чеснок, курагу и зёрнышки (семена кунжута, мака и другие). Зёрнышки также служат для украшения. </p>
+
+            <p>Хлеб можно есть отдельно, однако нередко его едят со сливочным, арахисовым или подсолнечным маслом, вареньем, маргарином, повидлом, джемом, желе, мармеладом, мёдом, что по сути является блюдом, носящим название бутерброд. Хлеб используется также как основа для сэндвича. Он может быть только выпеченным или впоследствии подрумянен (например, в тостере) и может подаваться практически без ограничений от комнатной температуры до горячего состояния. В некоторых культурах хлеб одновременно используется и как столовый прибор.</p>
+
+            <p>Неупакованный хлеб можно хранить в хлебнице, и тогда он дольше останется свежим.</p>
+
+                    <p>Существует наследственное заболевание, целиакия, при котором употребление в пищу хлеба противопоказано, поскольку хлеб содержит глютен, а больной должен соблюдать пожизненную аглютеновую диету. </p>
         </div>
     </div>
 @endsection
