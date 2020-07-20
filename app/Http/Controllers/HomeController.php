@@ -10,7 +10,7 @@ class HomeController extends Controller
 
 
     public function index () {
-        $catalogs = Catalog::paginate(3);
+        $catalogs = Catalog::paginate(15);
         return view ('pages.index', compact('catalogs'));
     }
 

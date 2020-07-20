@@ -249,11 +249,41 @@ class Catalog extends Model
 
 
 
-
+    //------------------------------------------
 
     ### следующая предыдующая запись
+
     public function hasPrevTovar () {
-        
+        return self::where('id', '<', $this->id)->max('id');
     }
+
+    public function getPrevTovar () {
+        $catalogID = $this->hasPrevTovar();
+        return self::find($catalogID);
+    }
+
+
+
+
+    public function hasNextTovar () {
+        return self::where('id', '>', $this->id)->min('id');
+    }
+
+    public function getNextTovar () {
+        $catalogID = $this->hasNextTovar();
+        return self::find($catalogID);
+    }
+
+
+
+
+    ### похожие записи - вывод всех записей кроме текущей
+    public function related () {
+        return self::all()->except($this->id);
+    }
+
+
+
+
 
 }

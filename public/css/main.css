@@ -35,3 +35,21 @@ body h1 {
   color: #fff;
 }
 
+.prevnextlink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prevnextlink img {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.catalogPicDetail {
+  width: 100%;
+  max-width: 100%;
+}
+

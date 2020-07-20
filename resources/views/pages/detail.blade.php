@@ -6,31 +6,33 @@
 
             <h1 class="uk-article-title">{{ $catalog->title }}</h1>
 
-            <p class="uk-article-meta">Автор <a href="#">Super User</a> {{ $catalog->getDate() }} <br>
-                теги |
-                @foreach($catalog->tags as $tag)
-                    <a href="#">{{ $tag->title }}</a>
-                @endforeach
-            </p>
+
 
             <p><div class="uk-label">{{ $catalog->category->title }}</div></p>
-            <img src="{{ $catalog->getImage() }}" alt="">
 
 
-            <p>{!! $catalog->big_text  !!} </p>
-
-            <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                <div>
-                    <a class="uk-button uk-button-text" href="#">Следующая </a>
+            <div uk-grid>
+                <div class="uk-width-1-2@l uk-width-1-3@m uk-width-1-1@s uk-width-1-1">
+                    <img class="catalogPicDetail" src="{{ $catalog->getImage() }}" alt="">
                 </div>
-                <div>
-                    <a class="uk-button uk-button-text" href="#">Предыдущая </a>
+                <div class="uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s uk-width-1-1">
+                    <p class="uk-article-meta">Автор <a href="#">вкусный хлеб</a> {{ $catalog->getDate() }} <br>
+                        теги |
+                        @foreach($catalog->tags as $tag)
+                            <a href="#">{{ $tag->title }}</a>
+                        @endforeach
+                    </p>
+                    <p>{!! $catalog->big_text  !!} </p>
+                    <p>Срок годности <strong>{{ $catalog->srok_godnosti }}</strong></p>
                 </div>
             </div>
 
-            <div class="uk-margin">
-                <a href="{{ url('/') }}" class="uk-button uk-button-primary uk-button-small">Назад</a>
-            </div>
+
+
+
+
+
+
 
         </article>
     </div>
@@ -48,38 +50,78 @@
 
             <div>
                 @if($catalog->hasPrevTovar())
-                    <a href="{{ route('catalog.detail', $catalog->getPrevTovar()->slug) }}" class="uk-card uk-card-default uk-card-body">
-                        <span uk-icon="icon: chevron-left"></span>
-                        {{ $catalog->getPrevTovar->title }}
+                    <a href="{{ route('catalog.detail', $catalog->getPrevTovar()->slug) }}" class="uk-card uk-card-default uk-card-body uk-card-small uk-link-reset uk-button-text uk-card-hover prevnextlink">
+                        <img src="{{ $catalog->getPrevTovar()->getImage() }}" alt="">
+                       <div>
+                           <span uk-icon="icon: chevron-left"></span>
+                           {{ $catalog->getPrevTovar()->title }}
+                       </div>
                     </a>
                 @endif
             </div>
 
-            <div>
-                <a href="#" class="uk-card uk-card-default uk-card-body">
-                    Item <span uk-icon="icon: chevron-right"></span>
-                </a>
-            </div>
+            @if($catalog->hasNextTovar())
+                <div>
+                    <a href="{{ route('catalog.detail', $catalog->getNextTovar()->slug) }}" class="uk-card uk-card-default uk-card-body uk-card-small uk-link-reset uk-card-hover uk-button-text prevnextlink">
+
+                        <div>
+                            {{ $catalog->getNextTovar()->title }}
+                            <span uk-icon="icon: chevron-right"></span>
+                        </div>
+
+                        <img src="{{ $catalog->getNextTovar()->getImage() }}" alt="">
+                    </a>
+                </div>
+            @endif
 
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
+
+
 
     <br>
     <br>
     <br>
     <br>
 
-    <br>
-    <br>
-    <br>
-    <br>
+
+    <div class="uk-container">
+
+        <div class="uk-child-width-1-5@l uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid-match" uk-grid>
+
+            @foreach($catalog->related() as $item)
+                <div>
+                    <div class="uk-card uk-card-default uk-card-hover uk-card-small">
+                        <a href="{{ route('catalog.detail', $item->slug) }}" class="uk-link-reset">
+                            <div class="uk-card-media-top">
+                                <img src="{{ $item->getImage() }}" alt="">
+                            </div>
+                            <div class="uk-card-body uk-card-small">
+                                <div class="uk-visible@s uk-label">{{ $item->getCategoryTitle() }}</div>
+                                <p> {{ $item->title }}</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+
+    </div>
+
 
     <br>
     <br>
     <br>
     <br>
+    <br>
+    <br>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
 @endsection

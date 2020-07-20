@@ -44,3 +44,26 @@ body {
 
 
 
+.prevnextlink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+    }
+}
+
+
+.catalogPicDetail {
+    width: 100%;
+    max-width: 100%;
+}
+
+
+
+
+
+
