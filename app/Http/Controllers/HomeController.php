@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Catalog;
 class HomeController extends Controller
@@ -21,6 +22,22 @@ class HomeController extends Controller
         $catalog = Catalog::where('slug', $slug)->firstOrFail();
         return view ('pages.detail', compact('catalog'));
     }
+
+
+
+
+
+    ### выводим сортировку по тегам
+    public function tag ($slug) {
+        $tag = Tag::where('slug', $slug)->firstOrFail();
+
+//        dd($tag->catalog()->paginate(3));
+
+        $catalogs = $tag->catalog;
+        return view ('pages.tag', compact('catalogs'));
+    }
+
+
 
 
 

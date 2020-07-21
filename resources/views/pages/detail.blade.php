@@ -19,11 +19,11 @@
                     <p class="uk-article-meta">Автор <a href="#">вкусный хлеб</a> {{ $catalog->getDate() }} <br>
                         теги |
                         @foreach($catalog->tags as $tag)
-                            <a href="#">{{ $tag->title }}</a>
+                            <a href="{{ route('catalog.tags', $tag->slug) }}">{{ $tag->title }}</a>
                         @endforeach
                     </p>
                     <p>{!! $catalog->big_text  !!} </p>
-                    <p>Срок годности <strong>{{ $catalog->srok_godnosti }}</strong></p>
+{{--                    <p>Срок годности <strong>{{ $catalog->srok_godnosti }}</strong></p>--}}
                 </div>
             </div>
 
@@ -94,7 +94,7 @@
                     <div class="uk-card uk-card-default uk-card-hover uk-card-small">
                         <a href="{{ route('catalog.detail', $item->slug) }}" class="uk-link-reset">
                             <div class="uk-card-media-top">
-                                <img src="{{ $item->getImage() }}" alt="">
+                                <img style="width: 100%; max-width: 100%;" src="{{ $item->getImage() }}" alt="">
                             </div>
                             <div class="uk-card-body uk-card-small">
                                 <div class="uk-visible@s uk-label">{{ $item->getCategoryTitle() }}</div>
