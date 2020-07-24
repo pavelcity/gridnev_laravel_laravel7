@@ -27,13 +27,6 @@
                 </div>
             </div>
 
-
-
-
-
-
-
-
         </article>
     </div>
 
@@ -87,26 +80,42 @@
 
     <div class="uk-container">
 
-        <div class="uk-child-width-1-5@l uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid-match" uk-grid>
 
-            @foreach($catalog->related() as $item)
-                <div>
-                    <div class="uk-card uk-card-default uk-card-hover uk-card-small">
-                        <a href="{{ route('catalog.detail', $item->slug) }}" class="uk-link-reset">
-                            <div class="uk-card-media-top">
-                                <img style="width: 100%; max-width: 100%;" src="{{ $item->getImage() }}" alt="">
-                            </div>
-                            <div class="uk-card-body uk-card-small">
-                                <div class="uk-visible@s uk-label">{{ $item->getCategoryTitle() }}</div>
-                                <p> {{ $item->title }}</p>
-                            </div>
-                        </a>
 
-                    </div>
+        <div class="uk-grid-medium" uk-grid>
+
+            <div class="uk-width-1-5@l">
+                @include('pages._sidebar')
+            </div>
+
+
+            <div class="uk-width-expand@m">
+                <h3 class="uk-heading-divider uk-text-center">Каталог продукции</h3>
+                <div class="uk-child-width-1-4@l uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid-match" uk-grid>
+
+                    @foreach($catalog->related() as $item)
+                        <div>
+                            <div class="uk-card uk-card-default uk-card-hover uk-card-small">
+                                <a href="{{ route('catalog.detail', $item->slug) }}" class="uk-link-reset">
+                                    <div class="uk-card-media-top">
+                                        <img style="width: 100%; max-width: 100%;" src="{{ $item->getImage() }}" alt="">
+                                    </div>
+                                    <div class="uk-card-body uk-card-small">
+                                        <div class="uk-visible@s uk-label">{{ $item->getCategoryTitle() }}</div>
+                                        <p> {{ $item->title }}</p>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                    @endforeach
+
                 </div>
-            @endforeach
+            </div>
 
         </div>
+
+
 
     </div>
 

@@ -29,10 +29,14 @@ class Tag extends Model
         return $this->belongsToMany(
             Catalog::class,
             'catalog_tags',
-            'post_id',
-            'tag_id'
+            'tag_id',
+            'post_id'
         );
     }
+
+
+
+
 
 
 

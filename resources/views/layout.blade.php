@@ -17,15 +17,15 @@
 
         <div class="uk-navbar-center-left"><div>
                 <ul class="uk-navbar-nav">
-                    <li class=""><a href="#">Магазины</a></li>
-                    <li class=""><a href="#">Продукция</a></li>
+                    <li class=""><a href="{{ url('/shop') }}">Магазины</a></li>
+                    <li class=""><a href="{{ url('/catalog') }}">Продукция</a></li>
                 </ul>
             </div></div>
         <a class="uk-navbar-item uk-logo" href="{{ url('/') }}">Gridnev</a>
         <div class="uk-navbar-center-right"><div>
                 <ul class="uk-navbar-nav">
-                    <li><a href="#">Блог</a></li>
-                    <li><a href="#">Контакты</a></li>
+                    <li><a href="{{ url('/blog') }}">Блог</a></li>
+                    <li><a href="{{ url('/contacts') }}">Контакты</a></li>
                     <li><a href="{{ url('/admin') }}">админка</a></li>
                 </ul>
             </div>

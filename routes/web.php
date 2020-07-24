@@ -8,8 +8,18 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', 'HomeController@index');
+
+Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/catalog/{slug}', 'HomeController@detail')->name('catalog.detail');
+
 Route::get('/tag/{slug}', 'HomeController@tag')->name('catalog.tags');
+
+Route::get('/blog', 'BlogController@index')->name('blog.home');
+
+Route::get('/shop', 'ShopController@index')->name('shop.home');
+
+Route::get('/contacts', 'ContactsController@index')->name('contacts.home');
+
 
 
 

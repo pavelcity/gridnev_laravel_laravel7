@@ -11,8 +11,9 @@ class HomeController extends Controller
 
 
     public function index () {
-        $catalogs = Catalog::paginate(15);
-        return view ('pages.index', compact('catalogs'));
+        $catalogs = Catalog::paginate(12);
+        $tags = Tag::all();
+        return view ('pages.index', compact('catalogs', 'tags'));
     }
 
 
@@ -20,7 +21,8 @@ class HomeController extends Controller
     ### показываем детальную карточку товара с главной страницы
     public function detail ($slug) {
         $catalog = Catalog::where('slug', $slug)->firstOrFail();
-        return view ('pages.detail', compact('catalog'));
+        $tags = Tag::all();
+        return view ('pages.detail', compact('catalog', 'tags'));
     }
 
 
@@ -30,11 +32,8 @@ class HomeController extends Controller
     ### выводим сортировку по тегам
     public function tag ($slug) {
         $tag = Tag::where('slug', $slug)->firstOrFail();
-
-//        dd($tag->catalog()->paginate(3));
-
-        $catalogs = $tag->catalog;
-        return view ('pages.tag', compact('catalogs'));
+        $catalogs = $tag->catalog()->paginate(10);
+        return view ('pages.tag', compact('catalogs', 'tag'));
     }
 
 
