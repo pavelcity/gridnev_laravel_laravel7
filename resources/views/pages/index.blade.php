@@ -1,6 +1,8 @@
 @extends('layout')
 
 
+@section('title')Грidnev - главная@endsection
+
 @section('content')
 
 

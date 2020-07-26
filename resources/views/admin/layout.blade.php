@@ -19,6 +19,7 @@
         <ul class="uk-navbar-nav">
             <li><a style=" pointer-events: none;" class=" " href="#"><i class="mdi mdi-code-tags"></i></a></li>
             <li><a href="{{ url('/') }}" class="">На сайт</a></li>
+            <li><a href="{{ url('/logout') }}">Выйти</a></li>
         </ul>
 
     </div>

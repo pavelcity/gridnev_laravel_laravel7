@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ГрiдневХлеб</title>
+    <title>@yield('title')</title>
     <link rel="stylesheet" href="/css/uikit_for_site.min.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -26,7 +26,16 @@
                 <ul class="uk-navbar-nav">
                     <li><a href="{{ url('/blog') }}">Блог</a></li>
                     <li><a href="{{ url('/contacts') }}">Контакты</a></li>
-                    <li><a href="{{ url('/admin') }}">админка</a></li>
+
+                    @if(Auth::check())
+                        <li><a href="{{ url('/admin') }}">админка</a></li>
+                        <li><a href="/logout">выйти</a></li>
+                    @else
+                        <li><a href="{{ url('/register') }}">Регистрация</a></li>
+                        <li><a href="{{ url('/login') }}">Войти</a></li>
+                    @endif
+
+
                 </ul>
             </div>
         </div>

@@ -53,3 +53,17 @@ body h1 {
   max-width: 100%;
 }
 
+.countCategory {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.countCategory .category {
+  display: block;
+}
+
+.countCategory .numbers {
+  display: block;
+}
+

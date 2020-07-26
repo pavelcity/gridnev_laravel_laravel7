@@ -7,7 +7,7 @@
 
     <div class="uk-container">
 
-    <h4>отсортировано по тегу: <b>{{ $tag->title }}</b> </h4>
+    <h4>отсортировано: <b>{{ $tag->title }}</b> </h4>
 
 
 
