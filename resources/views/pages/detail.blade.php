@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="uk-container">
+
+        @if(session('status'))
+            <div class="uk-alert-success" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{ session('status') }}</p>
+            </div>
+        @endif
+
+
+
         <article class="uk-article">
 
             <h1 class="uk-article-title">{{ $catalog->title }}</h1>
@@ -16,7 +26,9 @@
                     <img class="catalogPicDetail" src="{{ $catalog->getImage() }}" alt="">
                 </div>
                 <div class="uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s uk-width-1-1">
-                    <p class="uk-article-meta">Автор <a href="#">вкусный хлеб</a> {{ $catalog->getDate() }} <br>
+                    <p class="uk-article-meta">Автор | {{ $catalog->author->name ?? "не указан" }} |
+
+	                    {{ $catalog->getDate() }} <br>
                         теги |
                         @foreach($catalog->tags as $tag)
                             <a href="{{ route('catalog.tags', $tag->slug) }}">{{ $tag->title }}</a>
@@ -29,6 +41,9 @@
 
         </article>
     </div>
+
+
+
 
 
 
@@ -71,6 +86,34 @@
     </div>
 
 
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="uk-container">
+        <article class="uk-comment uk-comment-primary">
+            <header class="uk-comment-header">
+                <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="uk-comment-avatar" src="{{ $user->getImage() }}" width="80" height="80" alt="">
+                    </div>
+                    <div class="uk-width-expand">
+                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{ $user->name }}</a></h4>
+                        {{--                        <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">--}}
+                        {{--                            <li><a href="#">12 days ago</a></li>--}}
+                        {{--                            <li><a href="#">Reply</a></li>--}}
+                        {{--                        </ul>--}}
+                    </div>
+                </div>
+            </header>
+            <div class="uk-comment-body">
+                <p>Короткое описание</p>
+            </div>
+        </article>
+    </div>
+
+
 
     <br>
     <br>
@@ -90,7 +133,48 @@
 
 
             <div class="uk-width-expand@m">
-                <h3 class="uk-heading-divider uk-text-center">Каталог продукции</h3>
+                @include('admin.errors')
+
+                @if(Auth::check())
+                <div class="uk-card uk-card-primary uk-card-small uk-card-body">
+                    <h3 class="uk-card-title">Оставить комментарий</h3>
+
+
+
+
+                    <form class="uk-form-stacked" method="post" action="{{ route('comment') }}">
+
+                        @csrf
+
+                        <input type="hidden" name="post_id" value="{{ $catalog->id }}">
+
+
+                        <div class="uk-margin">
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="tarea">Комментарий</label>
+                                <textarea class="uk-textarea" id="tarea" name="text" rows="5" placeholder=""></textarea>
+                            </div>
+                        </div>
+
+                        <div class="uk-margin">
+                            <button class="uk-button uk-button-default uk-button-small">Отправить</button>
+                        </div>
+                     </form>
+                </div>
+
+                @else
+                    <div class="uk-card uk-card-primary uk-card-small uk-card-body">
+                    <p>Зарегистрированные пользователи могут оставлять комментарии <a href="/login">Login</a></p>
+                    </div>
+
+                @endif
+
+
+
+
+
+
+                <h3 class="uk-heading-divider uk-text-center">Рекомендуем</h3>
                 <div class="uk-child-width-1-4@l uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid-match" uk-grid>
 
                     @foreach($catalog->related() as $item)
@@ -126,6 +210,8 @@
     <br>
     <br>
     <br>
+
+
 
 
     <br>

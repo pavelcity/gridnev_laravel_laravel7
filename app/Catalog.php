@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Auth;
 
 class Catalog extends Model
 {
@@ -64,6 +65,7 @@ class Catalog extends Model
 
 
 
+
     ### создаем связь с тегами
     public function tags()
     {
@@ -95,7 +97,7 @@ class Catalog extends Model
         {
             $catalog = new static;
             $catalog->fill($fields);
-            $catalog->user_id = 1;
+            $catalog->user_id = Auth::user()->id;
 
             $catalog->save();
             // parent::save();
@@ -275,7 +277,7 @@ class Catalog extends Model
     }
 
 
-    
+
 
 
     ### похожие записи - вывод всех записей кроме текущей

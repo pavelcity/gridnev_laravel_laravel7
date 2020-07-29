@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
      public function catalog () {
-         return $this->hasOne(Catalog::class);
+         return $this->belongsTo(Catalog::class);
      }
 
      public function author () {
-         return $this->hasOne(User::class);
+         return $this->belongsTo(User::class);
      }
 
 

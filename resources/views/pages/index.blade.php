@@ -18,6 +18,9 @@
                             <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
                                 <h3 class="uk-margin-remove">{{ $catalog->title }}</h3>
                                 <p class="uk-margin-remove">{{ $catalog->category->title }}</p>
+
+<p>{{ $catalog->author->name ?? "автор не указан" }}</p>
+
                             </div>
                         </div>
                     </li>
@@ -67,6 +70,7 @@
                                             <div class="uk-visible@s uk-label">{{ $catalog->getCategoryTitle() }}</div>
                                             {{--                                <div class="uk-h4">{{ $catalog->category->title }}</div>--}}
                                             <p> {{ $catalog->title }}</p>
+
                                             {{--                            <p> {{ $catalog->getDate() }}</p>--}}
                                         </div>
                                     </a>

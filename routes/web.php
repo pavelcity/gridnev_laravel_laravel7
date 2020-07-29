@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'HomeController@index')->name(('home'));
+
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/catalog/{slug}', 'HomeController@detail')->name('catalog.detail');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('catalog.tags');
@@ -22,6 +23,9 @@ Route::get('/contacts', 'ContactsController@index')->name('contacts.home');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/logout', 'AuthController@logout')->name('logout');
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+    Route::post('/profile', 'ProfileController@store')->name('profile.store');
+    Route::post('/catalog', 'HomeController@comment')->name('comment');
 });
 
 Route::group(['middleware' => 'guest'], function(){

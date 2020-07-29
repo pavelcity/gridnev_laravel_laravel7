@@ -15,7 +15,6 @@ class CatalogController extends Controller
     {
         $catalogs = Catalog::paginate(12);
         $tags = Tag::all();
-        
 
         return view ('pages.catalog', compact('catalogs', 'tags'));
     }
