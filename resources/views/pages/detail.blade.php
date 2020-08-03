@@ -46,8 +46,6 @@
 
 
 
-
-
     <br>
     <br>
     <br>
@@ -91,19 +89,21 @@
     <br>
     <br>
 
+
+
+	@if(Auth::check())
     <div class="uk-container">
         <article class="uk-comment uk-comment-primary">
             <header class="uk-comment-header">
                 <div class="uk-grid-medium uk-flex-middle" uk-grid>
                     <div class="uk-width-auto">
+
+
                         <img class="uk-comment-avatar" src="{{ $user->getImage() }}" width="80" height="80" alt="">
+
                     </div>
                     <div class="uk-width-expand">
                         <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{ $user->name }}</a></h4>
-                        {{--                        <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">--}}
-                        {{--                            <li><a href="#">12 days ago</a></li>--}}
-                        {{--                            <li><a href="#">Reply</a></li>--}}
-                        {{--                        </ul>--}}
                     </div>
                 </div>
             </header>
@@ -112,6 +112,9 @@
             </div>
         </article>
     </div>
+    @endif
+
+
 
 
 
@@ -122,7 +125,6 @@
 
 
     <div class="uk-container">
-
 
 
         <div class="uk-grid-medium" uk-grid>
@@ -135,8 +137,41 @@
             <div class="uk-width-expand@m">
                 @include('admin.errors')
 
+
+            {{--комментарии--}}
+                @if(!$catalog->comments->isEmpty())
+                    @foreach($catalog->comments->where('status', 1) as $comment)
+                        <article class="uk-comment uk-comment-primary uk-margin-top">
+                            <header class="uk-comment-header">
+                                <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                    <div class="uk-width-auto">
+                                        <img class="uk-comment-avatar" src="{{ $comment->author->getImage() }}" width="80" height="80" alt="">
+{{--                                        <img class="uk-comment-avatar" src="https://avatars.mds.yandex.net/get-pdb/2018622/fd1d69b7-77dc-46db-906c-7a2be2082ea6/s1200?webp=false" width="80" height="80" alt="">--}}
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h4 class="uk-comment-title uk-margin-remove">{{ $comment->author->name }}</h4>
+                                        <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                                            <li>{{ $comment->created_at->diffForHumans() }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </header>
+                            <div class="uk-comment-body">
+                                <p> {{ $comment->text }}</p>
+                            </div>
+                        </article>
+                    @endforeach
+                @endif
+
+
+                {{--комментарии end--}}
+
+
+
+
+
                 @if(Auth::check())
-                <div class="uk-card uk-card-primary uk-card-small uk-card-body">
+                <div class="uk-card uk-card-primary uk-card-small uk-card-body uk-margin-top">
                     <h3 class="uk-card-title">Оставить комментарий</h3>
 
 
@@ -174,27 +209,30 @@
 
 
 
-                <h3 class="uk-heading-divider uk-text-center">Рекомендуем</h3>
-                <div class="uk-child-width-1-4@l uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid-match" uk-grid>
+{{--                <h3 class="uk-heading-divider uk-text-center">Рекомендуем</h3>--}}
+{{--                <div class="uk-child-width-1-4@l uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid-match" uk-grid>--}}
 
-                    @foreach($catalog->related() as $item)
-                        <div>
-                            <div class="uk-card uk-card-default uk-card-hover uk-card-small">
-                                <a href="{{ route('catalog.detail', $item->slug) }}" class="uk-link-reset">
-                                    <div class="uk-card-media-top">
-                                        <img style="width: 100%; max-width: 100%;" src="{{ $item->getImage() }}" alt="">
-                                    </div>
-                                    <div class="uk-card-body uk-card-small">
-                                        <div class="uk-visible@s uk-label">{{ $item->getCategoryTitle() }}</div>
-                                        <p> {{ $item->title }}</p>
-                                    </div>
-                                </a>
+{{--                    @foreach($catalog->related() as $item)--}}
+{{--                        <div>--}}
+{{--                            <div class="uk-card uk-card-default uk-card-hover uk-card-small">--}}
+{{--                                <a href="{{ route('catalog.detail', $item->slug) }}" class="uk-link-reset">--}}
+{{--                                    <div class="uk-card-media-top">--}}
+{{--                                        <img style="width: 100%; max-width: 100%;" src="{{ $item->getImage() }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="uk-card-body uk-card-small">--}}
+{{--                                        <div class="uk-visible@s uk-label">{{ $item->getCategoryTitle() }}</div>--}}
+{{--                                        <p> {{ $item->title }}</p>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
 
-                            </div>
-                        </div>
-                    @endforeach
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
 
-                </div>
+{{--                </div>--}}
+
+
+
             </div>
 
         </div>
@@ -204,10 +242,6 @@
     </div>
 
 
-    <br>
-    <br>
-    <br>
-    <br>
     <br>
     <br>
 

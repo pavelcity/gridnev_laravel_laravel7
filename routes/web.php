@@ -15,9 +15,15 @@ Route::get('/', 'HomeController@index')->name(('home'));
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/catalog/{slug}', 'HomeController@detail')->name('catalog.detail');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('catalog.tags');
+
 Route::get('/blog', 'BlogController@index')->name('blog.home');
+Route::get('/blog/{id}', 'BlogController@detail')->name('blog.detail');
+
 Route::get('/shop', 'ShopController@index')->name('shop.home');
 Route::get('/contacts', 'ContactsController@index')->name('contacts.home');
+
+Route::post('/subscribers', 'SubscribersController@subscribe')->name('subscribe');
+Route::get('/verify/{token}', 'SubscribersController@verify')->name('verify');
 
 
 
@@ -49,4 +55,9 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware' => 'admin'],
     Route::resource('/tags', 'TagsController');
     Route::resource('/users', 'UsersController');
     Route::resource('/catalog', 'CatalogController');
+    Route::get('/comments', 'CommentsController@index')->name('admin.comments');
+    Route::get('/comments/{id}', 'CommentsController@toggle')->name('admin.togglecomment');
+    Route::delete('/comments/{id}/destroy', 'CommentsController@delete')->name('admin.destroy');
+    Route::resource('/subscribers', 'SubscribersController');
+    Route::resource('/blog', 'BlogController');
 });

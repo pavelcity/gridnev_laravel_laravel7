@@ -16,8 +16,8 @@ class HomeController extends Controller
     public function index () {
         $catalogs = Catalog::paginate(24);
         $tags = Tag::all();
-
-        return view ('pages.index', compact('catalogs', 'tags'));
+        $user = Auth::user();
+        return view ('pages.index', compact('catalogs', 'tags', 'user'));
     }
 
 
@@ -29,7 +29,7 @@ class HomeController extends Controller
         $catalog = Catalog::where('slug', $slug)->firstOrFail();
         $tags = Tag::all();
         $user = Auth::user();
-
+//        dd($catalog->comments);
         return view ('pages.detail', compact('catalog', 'tags', 'user'));
     }
 

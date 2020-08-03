@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Auth;
 
+
 class Catalog extends Model
 {
 
@@ -83,6 +84,15 @@ class Catalog extends Model
         }
         return 'нет тегов';
 
+    }
+
+
+
+
+
+    ### связь с комментариями
+    public function comments () {
+        return $this->hasMany(Comment::class, 'post_id');
     }
 
 

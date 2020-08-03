@@ -5,7 +5,18 @@
 
 @section('content')
 
+    <div class="uk-container" style="margin-bottom: 30px;">
+        @if(session('oksubs'))
+            <div class="uk-alert-primary" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{ session('oksubs') }}</p>
+            </div>
+        @endif
+    </div>
 
+
+
+    
     <div class="uk-container">
         <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="clsActivated: uk-transition-active; center: true">
 

@@ -3,13 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Blog;
 
 class BlogController extends Controller
 {
 
     public function index()
     {
-        return view ('pages.blog.index');
+        $blogs = Blog::all();
+        return view ('pages.blog.index', compact('blogs'));
+    }
+
+
+    public function detail($id)
+    {
+        $blog = Blog::find($id);
+        return view ('pages.blog.detail', compact('blog'));
     }
 
 

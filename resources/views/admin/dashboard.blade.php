@@ -9,10 +9,10 @@
 
 
         <div class="uk-width-1-6@m leftAdminPanel">
-            <div class="uk-card uk-card-body uk-card-small">
                 @include('admin._sidebar')
-            </div>
         </div>
+
+
         <div class="uk-width-expand@m uk-padding">
 
             <img  src="/img/logo_dash2.jpg" alt="">

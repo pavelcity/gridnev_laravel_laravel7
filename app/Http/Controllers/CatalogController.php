@@ -13,7 +13,7 @@ class CatalogController extends Controller
 
     public function index()
     {
-        $catalogs = Catalog::paginate(12);
+        $catalogs = Catalog::paginate(32);
         $tags = Tag::all();
 
         return view ('pages.catalog', compact('catalogs', 'tags'));

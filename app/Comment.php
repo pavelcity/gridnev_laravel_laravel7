@@ -11,7 +11,7 @@ class Comment extends Model
      }
 
      public function author () {
-         return $this->belongsTo(User::class);
+         return $this->belongsTo(User::class, 'user_id');
      }
 
 
@@ -29,7 +29,7 @@ class Comment extends Model
     }
 
     public function toggleStatus () {
-         if ($this->status = 0) {
+         if ($this->status == 0) {
              return $this->allow();
          }
             return $this->veto();
