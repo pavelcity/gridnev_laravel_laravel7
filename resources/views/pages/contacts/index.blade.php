@@ -2,30 +2,30 @@
 
 @section('content')
 
-
+    @foreach($contacts as $contact)
     <div class="uk-container">
-        <article class="uk-article">
-
-            <h1 class="uk-article-title"><a class="uk-link-reset" href="">Контакты главная</a></h1>
-
-            <p class="uk-article-meta">Written by <a href="#">Super User</a> on 12 April 2012. Posted in <a href="#">Blog</a></p>
-
-            <p class="uk-text-lead">Раздел находится в стадии разработки и наполнения</p>
-
-            <img style="width: 300px;" src="http://gridnevhleb.ru/img/gridnev2.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                <div>
-                    <a class="uk-button uk-button-text" href="#">Read more</a>
-                </div>
-                <div>
-                    <a class="uk-button uk-button-text" href="#">5 Comments</a>
+        <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-2">
+                <div class="">
+                    <div class="uk-h3 uk-margin-remove-bottom"><i class="mdi mdi-sign-direction"></i>{{ $contact->one_title }}</div>
+                    <ul class="uk-list uk-list-collapse uk-margin-remove">
+                        <li>{{ $contact->one_index }}</li>
+                        <li>{{ $contact->one_street }}</li>
+                    </ul>
+                    <ul class="uk-list">
+                        <li><i class="mdi mdi-phone-in-talk"></i> <a class="" href="tel:{{ $contact->one_phone }}">{{ $contact->one_phone }}</a></li>
+                        <li><i class="mdi mdi-at"></i> <a href="mailto:{{ $contact->one_email }}">{{ $contact->one_email }}</a></li>
+                    </ul>
                 </div>
             </div>
-
-        </article>
+            <div class="uk-width-1-2">
+                <div class="">
+                    <img src="/img/gridnev2.jpg" alt="">
+                </div>
+            </div>
+        </div>
     </div>
+    @endforeach
 
 
     <br>

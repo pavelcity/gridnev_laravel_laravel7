@@ -16,6 +16,7 @@
     </li>
     <hr>
     <li><a href="{{ route('blog.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Блог</a></li>
+    <li><a href="{{ route('contacts.index') }}" class="uk-width-1-1 uk-button-small uk-button uk-button-default">Контакты</a></li>
 </ul>
 
 

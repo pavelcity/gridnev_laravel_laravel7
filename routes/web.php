@@ -20,6 +20,7 @@ Route::get('/blog', 'BlogController@index')->name('blog.home');
 Route::get('/blog/{id}', 'BlogController@detail')->name('blog.detail');
 
 Route::get('/shop', 'ShopController@index')->name('shop.home');
+
 Route::get('/contacts', 'ContactsController@index')->name('contacts.home');
 
 Route::post('/subscribers', 'SubscribersController@subscribe')->name('subscribe');
@@ -60,4 +61,5 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware' => 'admin'],
     Route::delete('/comments/{id}/destroy', 'CommentsController@delete')->name('admin.destroy');
     Route::resource('/subscribers', 'SubscribersController');
     Route::resource('/blog', 'BlogController');
+    Route::resource('/contacts', 'ContactsController');
 });

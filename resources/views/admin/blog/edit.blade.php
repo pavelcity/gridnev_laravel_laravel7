@@ -34,6 +34,22 @@
                 </div>
 
                 <div class="uk-margin">
+                    <img src="{{ $blog->showImage() }}" alt="">
+                </div>
+
+
+
+                <div class="uk-margin">
+                    <div uk-form-custom>
+                        <label class="uk-form-label" for="pic">Изменить картинку </label>
+                        <input id="pic" type="file" name="image">
+                        <button class="uk-button uk-button-default"  type="button" tabindex="-1">картинка</button>
+                    </div>
+                </div>
+
+
+
+                <div class="uk-margin">
                     <label class="uk-form-label" for="short">Короткое описание</label>
                     <div class="uk-form-controls">
                         <textarea class="uk-textarea" id="short" name="short_txt" rows="5" placeholder="">{{ $blog->short_txt }}</textarea>

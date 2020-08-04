@@ -5,6 +5,8 @@ namespace App;
 use http\Env\Request;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Str;
+
 class Blog extends Model
 {
     use Sluggable;
@@ -42,6 +44,37 @@ class Blog extends Model
         $this->save();
     }
 
+
+
+    ### удаление записи блога
+    public function remove () {
+        $this->delete();
+    }
+
+
+
+
+
+    //------------------------------------------
+
+    ### загрузка картики
+    public function addImage ($image) {
+        if ($image == null) {return;}
+
+        $filename = Str::random(10). '.' . $image->extension();
+        $image->storeAs('/uploads', $filename);
+        $this->image = $filename;
+        $this->save();
+    }
+
+
+    ### показать картинку
+    public function showImage() {
+        if($this->image == null) {
+            return '/img/not_avatar.jpg';
+        }
+        return '/uploads/' . $this->image;
+    }
 
 
 
