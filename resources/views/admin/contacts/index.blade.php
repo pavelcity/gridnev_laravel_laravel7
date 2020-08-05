@@ -22,7 +22,14 @@
         <div class="uk-width-expand@m uk-padding">
 
             <div class="uk-h3">Контакты</div>
-            <a href="{{ route('contacts.create') }}" class="uk-button uk-button-primary uk-button-small">Создать</a>
+{{--            <a href="{{ route('contacts.create') }}" class="uk-button uk-button-primary uk-button-small">Создать</a>--}}
+
+            @if(session('yes'))
+                <div class="uk-alert-primary" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p>{{ session('yes') }}</p>
+                </div>
+            @endif
 
             <table class="uk-table uk-table-middle uk-table-divider uk-table-hover">
                 <thead>
@@ -43,12 +50,14 @@
                             <div class="uk-margin-small">
                                 <div class="uk-button-group">
                                     <a href="{{ route('contacts.edit', $contact->id) }}" class="uk-icon-button uk-margin-small-right" uk-icon="pencil" uk-tooltip="title: edit"></a>
-                                    {!! Form::open([
-                                            'method' => 'delete',
-                                            'route' => ['contacts.destroy', $contact->id]
-                                            ]) !!}
-                                    <button onclick="return confirm('удалить?')" class="uk-icon-button uk-margin-small-right" uk-icon="trash" uk-tooltip="title: удалить"></button>
-                                    {!! Form::close() !!}
+
+{{--                                    {!! Form::open([--}}
+{{--                                            'method' => 'delete',--}}
+{{--                                            'route' => ['contacts.destroy', $contact->id]--}}
+{{--                                            ]) !!}--}}
+{{--                                    <button onclick="return confirm('удалить?')" class="uk-icon-button uk-margin-small-right" uk-icon="trash" uk-tooltip="title: удалить"></button>--}}
+{{--                                    {!! Form::close() !!}--}}
+
                                 </div>
                             </div>
                         </td>

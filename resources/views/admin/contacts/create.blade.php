@@ -186,7 +186,7 @@
 
                 <div class="uk-margin">
                     <div uk-form-custom>
-                        <input type="file" name="directro">
+                        <input type="file" name="director">
                         <button class="uk-button uk-button-default"  type="button" tabindex="-1">картинка</button>
                     </div>
                 </div>

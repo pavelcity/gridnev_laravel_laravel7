@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Contacts extends Model
 {
@@ -22,4 +24,70 @@ class Contacts extends Model
         'four_title',
         'four_phone',
     ];
+
+
+
+
+    //------------------------------------------
+
+    public static function add ($fields) {
+        $contacts = new static;
+        $contacts->fill($fields);
+        $contacts->save();
+
+        return $contacts;
+    }
+
+
+
+    public function edit ($fields) {
+        $this->fill($fields);
+        $this->save();
+    }
+
+
+    public function remove () {
+        $this->delete();
+    }
+
+
+
+
+
+
+
+
+
+    //------------------------------------------
+
+    ### удаление картинки
+    public function removeAvatar () {
+        if ($this->director != null) {
+            Storage::delete('/uploads/' . $this->director);
+        }
+    }
+
+    ////// загрузка картинки
+    public function uploadDirector ($image) {
+        if ($image == null) {return;}
+
+        $this->removeAvatar();
+
+
+        $filename = Str::random(10) . '.' . $image->extension();
+        $image->storeAs('/uploads/', $filename);
+        $this->director = $filename;
+        $this->save();
+    }
+
+
+
+
+    ////// вывод картинки
+    public function showPic () {
+        if ($this->director == null) {
+            return '/img/not_avatar.jpg';
+        }
+        return '/uploads/' . $this->director;
+    }
 }
