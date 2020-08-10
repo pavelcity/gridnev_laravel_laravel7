@@ -51,7 +51,7 @@ Route::group(['middleware' => 'guest'], function(){
 
 
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware' => 'admin'], function (){
-    Route::get('/', 'AdminController@index');
+    Route::get('/', 'AdminController@index')->name('admin.index');
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/tags', 'TagsController');
     Route::resource('/users', 'UsersController');
@@ -61,5 +61,6 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware' => 'admin'],
     Route::delete('/comments/{id}/destroy', 'CommentsController@delete')->name('admin.destroy');
     Route::resource('/subscribers', 'SubscribersController');
     Route::resource('/blog', 'BlogController');
+    Route::resource('/shop', 'ShopController');
     Route::resource('/contacts', 'ContactsController');
 });
