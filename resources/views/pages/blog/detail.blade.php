@@ -2,6 +2,10 @@
 
 
 @section('content')
+
+    @include('pages.includes.insidemenu')
+
+    
     <div class="uk-container">
         <article class="uk-article" style="margin-bottom: 40px;">
 

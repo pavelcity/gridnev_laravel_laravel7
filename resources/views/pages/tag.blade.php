@@ -3,6 +3,7 @@
 @section('content')
 
 
+    @include('pages.includes.insidemenu')
 
 
     <div class="uk-container">

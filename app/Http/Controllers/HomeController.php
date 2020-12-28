@@ -17,6 +17,7 @@ class HomeController extends Controller
         $catalogs = Catalog::paginate(24);
         $tags = Tag::all();
         $user = Auth::user();
+
         return view ('pages.index', compact('catalogs', 'tags', 'user'));
     }
 

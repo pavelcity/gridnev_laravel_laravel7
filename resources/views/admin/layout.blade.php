@@ -13,17 +13,26 @@
 <body>
 
 
+
+
+
 <nav class="uk-navbar-container" uk-navbar>
+
     <div class="uk-navbar-left">
-
         <ul class="uk-navbar-nav">
-            <li><a style=" pointer-events: none;" class=" " href="#"><i class="mdi mdi-code-tags"></i></a></li>
-            <li><a href="{{ url('/') }}" class="">На сайт</a></li>
-            <li><a href="{{ url('/logout') }}">Выйти</a></li>
+            <li> <a href="{{ url('/') }}" class=""><span style="margin-right: 10px;" uk-icon="icon: world"></span> Перейти на сайт</a></li>
         </ul>
-
     </div>
+
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav" style="margin-right: 20px;">
+            <li><a href="{{ url('/logout') }}">Выйти <span style="margin-left: 10px;" uk-icon="icon: sign-out"></span> </a> </li>
+        </ul>
+    </div>
+
 </nav>
+
+
 
 
 

@@ -1,39 +1,69 @@
 @extends('layout')
 
+
 @section('content')
 
 
+
+
+    @include('pages.includes.insidemenu')
+
+
+
+
+
+
     <div class="uk-container">
-        <article class="uk-article">
 
-            <h1 class="uk-article-title"><a class="uk-link-reset" href="">Магазины главная</a></h1>
 
-            <p class="uk-article-meta">Written by <a href="#">Super User</a> on 12 April 2012. Posted in <a href="#">Blog</a></p>
-
-            <p class="uk-text-lead">Раздел находится в стадии разработки и наполнения</p>
-
-            <img style="width: 300px;" src="https://avatars.mds.yandex.net/get-altay/918124/2a00000160ba1bcb81c8f5bd18519fe68b0b/XXL" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                <div>
-                    <a class="uk-button uk-button-text" href="#">Read more</a>
-                </div>
-                <div>
-                    <a class="uk-button uk-button-text" href="#">5 Comments</a>
-                </div>
+        <div class="uk-grid-medium" uk-grid>
+            <div class="uk-width-1-5@l">
+                @include('pages._sidebar')
             </div>
 
-        </article>
+
+
+
+            <div class="uk-width-expand@m">
+                <h3 class="uk-heading-divider uk-text-center">Сеть фирменных кафе-пекарен «ГРIДНЕВЪ-ХЛЕБЪ»</h3>
+                <div class="uk-child-width-1-1@l uk-child-width-1-1@m uk-child-width-1-1@s uk-child-width-1-1 uk-grid-small uk-grid-match" uk-grid>
+
+                    @foreach($shops as $shop)
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <h3>{{ $shop->name }}</h3>
+                            <p><span uk-icon="icon: future"></span>  {{ $shop->time_job }}</p>
+                            <div> <span uk-icon="icon: receiver"></span>  <a href="tel:{{ $shop->phone_shop }}"> {{ $shop->phone_shop }}</a></div>
+                            <img class="uk-margin" src="{{ $shop->getImage() }}" alt="">
+                        </div>
+                    @endforeach
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
     </div>
 
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
+
+
+
+
 
 @endsection
+
+
+
+

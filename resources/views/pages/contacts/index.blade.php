@@ -2,6 +2,9 @@
 
 @section('content')
 
+
+    @include('pages.includes.insidemenu')
+
     @foreach($contacts as $contact)
     <div class="uk-container">
         <div class="uk-grid-small" uk-grid>

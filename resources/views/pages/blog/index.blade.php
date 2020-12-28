@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('pages.includes.insidemenu')
+
 
     <div class="uk-container">
         <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid="masonry: true; parallax: 25">

@@ -16,7 +16,7 @@ class CatalogController extends Controller
     public function index()
     {
 
-        $catalogs = Catalog::all();
+        $catalogs = Catalog::latest()->get();
         return view ('admin.catalog.index', compact('catalogs'));
     }
 
@@ -40,7 +40,6 @@ class CatalogController extends Controller
             'title' => 'required',
             'big_text' => 'required',
             'srok_godnosti' => 'required',
-            'date' => 'required',
             'image' => 'nullable|image'
         ]);
 
@@ -78,7 +77,6 @@ class CatalogController extends Controller
             'title' => 'required',
             'big_text' => 'required',
             'srok_godnosti' => 'required',
-            'date' => 'required',
             'image' => 'nullable|image'
         ]);
 

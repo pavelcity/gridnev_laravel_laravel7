@@ -33,12 +33,12 @@
                     <input class="uk-input" name="title" type="text" placeholder="Придумайте заголовок" value="{{ old('title') }}">
                 </div>
 
-                <div class="uk-margin">
-                    <div uk-form-custom>
-                        <input type="file" name="avatar">
-                        <button class="uk-button uk-button-default"  type="button" tabindex="-1">картинка</button>
-                    </div>
-                </div>
+{{--                <div class="uk-margin">--}}
+{{--                    <div uk-form-custom>--}}
+{{--                        <input type="file" name="avatar">--}}
+{{--                        <button class="uk-button uk-button-default"  type="button" tabindex="-1">картинка</button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="uk-margin">
                     <button class="uk-button uk-button-default">создать</button>

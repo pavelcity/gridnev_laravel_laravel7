@@ -1,11 +1,91 @@
-body {
-    background-color: ccc;
-    min-height: 100vh;
+//body {
+//    background-color: #ccc;
+//    min-height: 100vh;
+//
+//    h1 {
+//        color:#999;
+//    }
+//}
 
-    h1 {
-        color:#999;
+
+
+
+.utp {
+    padding-top: 10px;
+    min-height: calc(100vh - 10px);
+    width: 100%;
+    background-image: url("/img/010_2.jpg");
+    background-size: cover;
+    background-position: 0 0;
+    //background-color: #888;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    //min-height: 100%;
+
+
+
+    .top_side {
+        //background-color: #777;
+        .topLogo {
+            width: 960px;
+            height: auto;
+            max-width: 100%;
+        }
+
+        ul.topMenu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            li {
+                list-style: none;
+                margin: 0px 10px;
+
+                a {
+                    text-decoration: none;
+                    color:#37474f;
+                    background-color: #eee;
+                    font-size: 16px;
+                    font-weight: 700;
+                    padding: 2px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+
+
+
+    .bottom_side {
+        background-color: #E52711;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img.bottomTitle {
+            margin: 0 30px;
+        }
+
+
+        img.koloski {
+            width: 35px;
+            height: auto;
+        }
     }
 }
+
+
+
+
+
+
+
 
 
 .wrap_paginate {
@@ -78,6 +158,115 @@ body {
         display: block;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1600px) {
+
+}
+
+
+
+@media only screen and (max-width: 1440px) {
+
+}
+
+
+
+@media only screen and (max-width: 1366px) {
+
+}
+
+
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+
+}
+
+
+
+
+
+@media only screen and (max-width: 1024px) {
+
+    .utp .top_side .topLogo {
+        width: 700px;
+    }
+
+    .utp .top_side ul.topMenu li a {
+        font-size: 14px;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+    .utp .top_side .topLogo {
+        width: 500px;
+    }
+}
+
+
+
+
+
+@media only screen and (max-width: 480px) {
+
+}
+
+
+
+@media only screen and (max-width: 425px) {
+
+}
+
+
+@media only screen and (max-width: 414px) {
+
+}
+
+
+
+
+
+@media only screen and (max-width: 375px) {
+
+}
+
+
+
+@media only screen and (max-width: 360px) {
+
+}
+
+
+
+
+@media only screen and (max-width: 320px) {
+
+}
+
+
+
+
+
 
 
 

@@ -27,7 +27,7 @@
             <table class="uk-table uk-table-middle uk-table-divider uk-table-hover">
                 <thead>
                 <tr>
-                    <th class="uk-width-small">id</th>
+{{--                    <th class="uk-width-small">id</th>--}}
                     <th class="uk-width-small">картинка</th>
                     <th style="min-width: 200px;" class="uk-width-small">заголовок</th>
                     <th class="uk-width-small">категория</th>
@@ -39,7 +39,7 @@
 
                 @foreach($catalogs as $catalog)
                     <tr>
-                        <td >{{ $catalog->id }}</td>
+{{--                        <td >{{ $catalog->id }}</td>--}}
                         <td><img style="min-width: 100px;" src="{{ $catalog->getImage() }}" alt=""></td>
                         <td style="min-width: 300px;">{{ $catalog->title }}</td>
                         <td style="min-width: 200px;">{{ $catalog->getCategoryTitle() }}</td>

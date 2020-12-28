@@ -34,8 +34,8 @@
             <table class="uk-table uk-table-middle uk-table-divider uk-table-hover">
                 <thead>
                 <tr>
-                    <th class="uk-width-small">id</th>
-                    <th class="uk-width-expand">заголовок </th>
+{{--                    <th class="uk-width-small">id</th>--}}
+                    <th class="uk-width-expand">адрес </th>
                     <th></th>
                 </tr>
                 </thead>
@@ -43,8 +43,8 @@
 
                 @foreach($shops as $shop)
                     <tr>
-                        <td>{{ $shop->id }}</td>
-                        <td>{{ $shop->one_title }}</td>
+{{--                        <td>{{ $shop->id }}</td>--}}
+                        <td>{{ $shop->name }}</td>
 
                         <td>
                             <div class="uk-margin-small">

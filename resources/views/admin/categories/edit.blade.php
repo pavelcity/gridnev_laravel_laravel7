@@ -37,16 +37,16 @@
                     <input class="uk-input" name="title" type="text" placeholder="Придумайте заголовок" value="{{ $category->title }}">
                 </div>
 
-                <div class="uk-margin">
-                    <img style="width: 200px;" src="{{ $category->showPic() }}" alt="">
-                </div>
+{{--                <div class="uk-margin">--}}
+{{--                    <img style="width: 200px;" src="{{ $category->showPic() }}" alt="">--}}
+{{--                </div>--}}
 
-                <div class="uk-margin">
-                    <div uk-form-custom>
-                        <input type="file" name="avatar">
-                        <button class="uk-button uk-button-primary uk-button-small"  type="button" tabindex="-1">картинка</button>
-                    </div>
-                </div>
+{{--                <div class="uk-margin">--}}
+{{--                    <div uk-form-custom>--}}
+{{--                        <input type="file" name="avatar">--}}
+{{--                        <button class="uk-button uk-button-primary uk-button-small"  type="button" tabindex="-1">картинка</button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
 
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
+# это старый роут, его использовать не нужно
 //Route::get('/', function () {
 //    return view('welcome');
 //});

@@ -30,7 +30,8 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('pages._sidebar', function($view){
             $view->with('populars', Catalog::orderBy('views', 'desc')->take(3)->get());
-            $view->with('recents', Catalog::orderBy('date', 'desc')->take(3)->get());
+//            $view->with('recents', Catalog::orderBy('date', 'desc')->take(3)->get());
+            $view->with('recents', Catalog::latest()->take(5)->get());
             $view->with('categories', Category::all());
         });
 

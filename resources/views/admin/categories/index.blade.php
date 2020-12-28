@@ -27,8 +27,8 @@
             <table class="uk-table uk-table-middle uk-table-divider uk-table-hover">
                 <thead>
                 <tr>
-                    <th class="uk-width-small">id</th>
-                    <th >img </th>
+{{--                    <th class="uk-width-small">id</th>--}}
+{{--                    <th >img </th>--}}
                     <th class="uk-width-expand">заголовок </th>
                     <th></th>
                 </tr>
@@ -37,8 +37,8 @@
 
                 @foreach($categories as $category)
                     <tr>
-                        <td>{{ $category->id }}</td>
-                        <td><img class="picCategory" src="{{ $category->showPic() }}" alt=""></td>
+{{--                        <td>{{ $category->id }}</td>--}}
+{{--                        <td><img class="picCategory" src="{{ $category->showPic() }}" alt=""></td>--}}
                         <td>{{ $category->title }}</td>
 
                         <td>

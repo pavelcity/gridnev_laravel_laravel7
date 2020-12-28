@@ -71,18 +71,14 @@
                             null,
                             ['class' => 'uk-select uk-width-1-1', 'multiple' => 'multiple']
                             ) }}
-{{--                    <label><input class="uk-checkbox" type="checkbox"> ржаной</label>--}}
-{{--                    <label><input class="uk-checkbox" type="checkbox"> пшеничный</label>--}}
-{{--                    <label><input class="uk-checkbox" type="checkbox"> сучасный</label>--}}
-{{--                    <label><input class="uk-checkbox" type="checkbox"> бездрожжевой</label>--}}
                 </div>
 
 
 
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="datepicker">Дата:</label>
-                     <input type="text" class="uk-input uk-width-1-1" id="datepicker" name="date" value="{{ old('date') }}">
-                </div>
+{{--                <div class="uk-margin">--}}
+{{--                    <label class="uk-form-label" for="datepicker">Дата:</label>--}}
+{{--                     <input type="text" class="uk-input uk-width-1-1" id="datepicker" name="date" value="{{ old('date') }}">--}}
+{{--                </div>--}}
 
 
 

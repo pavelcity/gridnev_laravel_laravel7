@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Shop;
 
 class ShopController extends Controller
 {
 
     public function index()
     {
-        return view ('pages.shop.index');
+        $shops = Shop::all();
+        return view ('pages.shop.index', compact('shops'));
     }
 
 

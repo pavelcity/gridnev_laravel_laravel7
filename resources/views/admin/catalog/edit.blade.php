@@ -81,10 +81,10 @@
 
 
 
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="datepicker">Дата:</label>
-                    <input type="text" class="uk-input uk-width-1-1" id="datepicker" name="date" value="{{ $catalog->date }}">
-                </div>
+{{--                <div class="uk-margin">--}}
+{{--                    <label class="uk-form-label" for="datepicker">Дата:</label>--}}
+{{--                    <input type="text" class="uk-input uk-width-1-1" id="datepicker" name="date" value="{{ $catalog->date }}">--}}
+{{--                </div>--}}
 
 
 

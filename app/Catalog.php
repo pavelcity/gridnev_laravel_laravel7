@@ -19,7 +19,7 @@ class Catalog extends Model
     use Sluggable;
 
 
-    protected $fillable = ['title', 'srok_godnosti', 'date', 'big_text'];
+    protected $fillable = ['title', 'srok_godnosti', 'big_text'];
 
 
     ###

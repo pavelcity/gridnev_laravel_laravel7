@@ -64,7 +64,7 @@ class AuthController extends Controller
         ]);
 
         if ($result) {
-            return redirect()->route('home');
+            return redirect()->route('admin.index');
         }
         else {
             return redirect()->back()->with('status', 'Неправильный логин или пароль');

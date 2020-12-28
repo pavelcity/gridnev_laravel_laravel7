@@ -34,7 +34,7 @@
             <table class="uk-table uk-table-middle uk-table-divider uk-table-hover">
                 <thead>
                 <tr>
-                    <th class="uk-width-small">id</th>
+{{--                    <th class="uk-width-small">id</th>--}}
                     <th class="uk-width-expand">заголовок </th>
                     <th></th>
                 </tr>
@@ -43,7 +43,7 @@
 
                 @foreach($blogs as $blog)
                     <tr>
-                        <td>{{ $blog->id }}</td>
+{{--                        <td>{{ $blog->id }}</td>--}}
                         <td>{{ $blog->title }}</td>
 
                         <td>
